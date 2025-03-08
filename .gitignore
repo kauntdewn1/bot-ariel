@@ -1,0 +1,24 @@
+# Ignorar diretórios do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.vscode/
+.idea/
+
+# Ignorar ambientes virtuais
+venv/
+.venv/
+
+# Ignorar logs e arquivos temporários
+*.log
+*.sqlite3
+*.db
+*.DS_Store
+*.swp
+
+# Ignorar credenciais
+.env
+config.json

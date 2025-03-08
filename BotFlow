@@ -1,0 +1,13 @@
+# Nome do Bot: Flow360Moderator
+
+Descrição: Bot de moderação para Telegram
+Versão: 1.0.0
+Autor: [NETTO MELLO @nettomello](https://github.com/kauntdewn1/)
+
+Funções:
+
+- Moderação de mensagens (AntiSpam)
+- Mensagem de boas-vindas
+- Comandos de regras e suporte
+- Regras
+- e conexão com BotFather

@@ -1,0 +1,55 @@
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext
+import logging
+
+# Ativar logging para depuração
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+
+# Token do Bot (Pegue do BotFather)
+TOKEN = "7776541912:AAHtc5foePG2WxaFOc5eTfshjVEzHZXiONQ"
+
+# Lista de palavras proibidas (pode ser expandida)
+PALAVRAS_BANIDAS = ["spam", "fake", "scam", "golpe", "hacker"]
+
+# Lista de links suspeitos
+LINKS_SUSPEITOS = ["http://", "https://", ".ru", ".xyz", "bit.ly", "t.me"]
+
+REGRAS_GRUPO = "📜 Regras do Grupo:\n1️⃣ Respeite todos os membros.\n2️⃣ Não envie links suspeitos.\n3️⃣ Proibido spam e mensagens ofensivas.\n4️⃣ Siga as diretrizes da comunidade.\n\n❗ O não cumprimento pode resultar em banimento."
+
+async def start(update: Update, context: CallbackContext) -> None:
+    await update.message.reply_text("Olá! Eu sou o bot de moderação e vou manter este grupo seguro! 🚀")
+
+async def regras(update: Update, context: CallbackContext) -> None:
+    await update.message.reply_text(REGRAS_GRUPO)
+
+async def verificar_mensagem(update: Update, context: CallbackContext) -> None:
+    user = update.message.from_user
+    message_text = update.message.text.lower()
+
+    # Verifica palavras proibidas
+    if any(palavra in message_text for palavra in PALAVRAS_BANIDAS):
+        await update.message.delete()
+        await context.bot.send_message(update.message.chat_id, f"🚨 @{user.username}, sua mensagem foi removida por conter palavras proibidas!")
+        return
+
+    # Verifica links suspeitos
+    if any(link in message_text for link in LINKS_SUSPEITOS):
+        await update.message.delete()
+        await context.bot.send_message(update.message.chat_id, f"🚫 @{user.username}, links suspeitos não são permitidos neste grupo!")
+        return
+
+def main():
+    app = Application.builder().token(TOKEN).build()
+
+    # Comandos básicos
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("regras", regras))
+
+    # Filtro de mensagens
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, verificar_mensagem))
+
+    # Iniciar o bot
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
