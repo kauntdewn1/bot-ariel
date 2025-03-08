@@ -1,9 +1,9 @@
-# Telegram Moderation Bot 🤖
+# Ariel Bot 🤖
 
-Este é um bot de moderação para grupos do Telegram, que detecta spam, remove mensagens suspeitas e ajuda a manter a comunidade segura.
+ssistente Inteligente de Marketing Digital da Flow360. Com automação e inteligência de dados.
 
 ## 📌 Funcionalidades
-- 🚫 Bloqueio de palavras ofensivas
+- 🚫 Moderaçao
 - 🔗 Filtro de links suspeitos
 - 🛡️ Proteção contra spam
 - 📜 Comando `/regras` para exibir as regras do grupo
@@ -11,4 +11,4 @@ Este é um bot de moderação para grupos do Telegram, que detecta spam, remove 
 ## 🚀 Como Usar
 1. Clone este repositório:
    ```sh
-   git clone https://github.com/seu-usuario/telegram-moderation-bot.git
+   git clone https://github.com/seu-usuario/ariel-bot.git
