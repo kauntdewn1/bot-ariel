@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 # Token do Bot (Pegue do BotFather)
-TOKEN = "7776541912:AAHtc5foePG2WxaFOc5eTfshjVEzHZXiONQ"
+TOKEN = "7907372134:AAHR6agf_oJ6CVOU0ywjdC5dQUkGAuLSeVw"
 
 # Lista de palavras proibidas (pode ser expandida)
 PALAVRAS_BANIDAS = ["spam", "fake", "scam", "golpe", "hacker"]
