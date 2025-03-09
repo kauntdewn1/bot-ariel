@@ -1,7 +1,11 @@
-import logging
-from bot import iniciar_bot
+from telegram.ext import Application, CommandHandler, MessageHandler, filters
+from bot.handlers import responder_mensagem
+("TELEGRAM_BOT_TOKEN")
 
-logging.basicConfig(level=logging.INFO)
-logging.info("Bot iniciado! Aguardando mensagens...")
-start_bot()  # This is the command that starts the bot
-iniciar_bot()  # This is the command that starts the bot
+app = Application.builder().token(TOKEN).build()
+
+# Handlers
+app.add_handler(CommandHandler("start", responder_mensagem))
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder_mensagem))
+
+app.run_polling()

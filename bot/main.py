@@ -2,7 +2,9 @@ import logging
 import os
 import re
 from telegram import Update, ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, CallbackContext, filters
+from telegram.ext import filters
+
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND & filters.ChatType.SUPERGROUP, responder_mensagem))
 
 # CONFIGURAÇÃO DO BOT (Substitua pelo seu token real)
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
