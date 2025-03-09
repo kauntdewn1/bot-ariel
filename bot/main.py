@@ -2,9 +2,25 @@ import logging
 import os
 import re
 from telegram import Update, ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import filters
+from telegram.ext import Application, MessageHandler, CommandHandler, filters
 
+# 🔹 Certifique-se de definir `TOKEN`
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")  # Pegando do ambiente Railway
+
+# 🔹 Criando o aplicativo do bot ANTES de adicionar os handlers
+app = Application.builder().token(TOKEN).build()
+
+# 🔹 Adicionando os Handlers depois de definir `app`
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND & filters.ChatType.SUPERGROUP, responder_mensagem))
+
+# 🔹 Função para rodar o bot
+def iniciar_bot():
+    print("🚀 Bot Iniciado!")
+    app.run_polling()
+
+# 🔹 Apenas executa o bot se o arquivo for rodado diretamente
+if __name__ == "__main__":
+    iniciar_bot()
 
 # CONFIGURAÇÃO DO BOT (Substitua pelo seu token real)
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
